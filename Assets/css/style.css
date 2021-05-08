@@ -153,7 +153,57 @@ p {
     width: 0%;
 }
 
-/* Responsive Layout */
+/* end.html CSS */
+.end-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+}
+
+input {
+    margin-bottom: 10px;
+    width: 200px;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    box-shadow: 0 0.1rem 1.4rem 0 rgba(111, 176, 255, 0.6);
+}
+
+input::placeholder {
+    color: gainsboro;
+}
+
+#username {
+margin-bottom: 30px;
+width: 100%;
+outline: none;
+}
+
+#end-text {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+#saveScoreBtn {
+    border: none;
+}
+
+/* ALL HIGHSCORES.html STYLING BELOW */
+#highScoresList {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.high-score {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+
+/* RESONSIVE LAYOUT */
 @media screen and (max-width: 768px) { 
     .choice-container {
         min-width: 400px;
