@@ -10,6 +10,11 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
+// ENDGAME function
+endGame = () => {
+  return window.location.assign('end.html');
+}
+
 // TIMER COUNTDOWN
 let seconds = document.getElementById("countdown").textContent;
 let countdown = setInterval(function(){
@@ -17,6 +22,9 @@ let countdown = setInterval(function(){
     (seconds == 1) ? document.getElementById("plural").textContent = "" : document.getElementById("plural").textContent = "s";
     document.getElementById("countdown").textContent = seconds;
     if (seconds <= 0) clearInterval(countdown);
+    if (seconds === 0) {
+      endGame();
+    }
 },1000);
 
 // MY QUESTIONS
@@ -89,7 +97,7 @@ getNewQuestion = () => {
 
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
-  questions.innerText = currentQuestion.questions;
+  question.innerText = currentQuestion.question;
 
   choices.forEach((choice) => {
     const number = choice.dataset["number"];
