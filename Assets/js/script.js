@@ -1,6 +1,6 @@
 const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".choice-text"));
-const progressText = document.querySelector("#questionText");
+const progressText = document.querySelector("#progressText");
 const scoreText = document.querySelector("#score");
 const progressBarFull = document.querySelector("#progressBarFull");
 
@@ -11,8 +11,8 @@ let questionCounter = 0;
 let availableQuestions = [];
 
 // TIMER COUNTDOWN
-var seconds = document.getElementById("countdown").textContent;
-var countdown = setInterval(function(){
+let seconds = document.getElementById("countdown").textContent;
+let countdown = setInterval(function(){
     seconds--;
     (seconds == 1) ? document.getElementById("plural").textContent = "" : document.getElementById("plural").textContent = "s";
     document.getElementById("countdown").textContent = seconds;
@@ -60,14 +60,14 @@ let questions = [
     choice3: ".class {}",
     choice4: "ID",
     answer: 3,
-  },
+  }
 ];
 const SCORE_POINTS = 100;
 const MAX_QUESTIONS = 5;
 
 // START FUNCTION
 startQuiz = () => {
-  questioncounter = 0;
+  questionCounter = 0;
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
@@ -83,13 +83,13 @@ getNewQuestion = () => {
 
   questionCounter++;
   progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
-  progressBarFull.getElementsByClassName.width = `${
+  progressBarFull.style.width = `${
     (questionCounter / MAX_QUESTIONS) * 100
   }%`;
 
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
-  questions.innerText = currentQuestion.question;
+  questions.innerText = currentQuestion.questions;
 
   choices.forEach((choice) => {
     const number = choice.dataset["number"];
@@ -126,27 +126,8 @@ choices.forEach((choice) => {
 });
 
 incrementScore = (num) => {
-  score += num;
+  score +=num;
   scoreText.innerText = score;
 };
-
-// Subtracting time IF wrong
-(function() {
-  var sec = 60;
-  function startTimer(){
-      var timer = setInterval(function(){
-          sec--;
-          document.getElementById('timer').innerHTML='00:'+sec;
-          if (selectedAnswer === 'incorrect') {
-            Math.floor(Math.timer) - 10 
-          }
-      }, 1000);
-  }
-  document.getElementById('incorrect').addEventListener('click', function() {
-      sec -= 5;
-      document.getElementById('timerDisplay').innerHTML='00:'+sec;
-  });
-  startTimer();
-})(); 
 
 startQuiz();
