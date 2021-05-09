@@ -33,6 +33,10 @@ p {
     align-items: center;
 }
 
+/* TIMER COUNTDOWN */
+.timer {
+    
+}
 /* quiz card content*/
 .quiz-cards {
     display: flex;

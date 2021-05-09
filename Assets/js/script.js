@@ -10,6 +10,15 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
+// TIMER COUNTDOWN
+var seconds = document.getElementById("countdown").textContent;
+var countdown = setInterval(function(){
+    seconds--;
+    (seconds == 1) ? document.getElementById("plural").textContent = "" : document.getElementById("plural").textContent = "s";
+    document.getElementById("countdown").textContent = seconds;
+    if (seconds <= 0) clearInterval(countdown);
+},1000);
+
 // MY QUESTIONS
 let questions = [
   {
@@ -120,5 +129,24 @@ incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
 };
+
+// Subtracting time IF wrong
+(function() {
+  var sec = 60;
+  function startTimer(){
+      var timer = setInterval(function(){
+          sec--;
+          document.getElementById('timer').innerHTML='00:'+sec;
+          if (selectedAnswer === 'incorrect') {
+            Math.floor(Math.timer) - 10 
+          }
+      }, 1000);
+  }
+  document.getElementById('incorrect').addEventListener('click', function() {
+      sec -= 5;
+      document.getElementById('timerDisplay').innerHTML='00:'+sec;
+  });
+  startTimer();
+})(); 
 
 startQuiz();
